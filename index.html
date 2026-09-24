@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Zen+Maru+Gothic:wght@500;700&display=swap">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="goal.css">
 </head>
 <body>
 <div class="wrap">
@@ -58,6 +59,29 @@
       <span class="val" id="sDays">0<small>/ 4日</small></span>
       <div class="dots" id="sDots" aria-hidden="true"></div>
     </div>
+  </section>
+
+  <!-- 減量目標：目標カロリーから運動で消費したカロリーを引いていく -->
+  <section class="goal" aria-label="減量目標">
+    <div class="goal-head">
+      <h2>減量目標まで あと</h2>
+      <div class="goal-inputs">
+        <div class="field-inline">
+          <label for="goalKg">減らしたい体重</label>
+          <input id="goalKg" type="number" inputmode="decimal" min="0.5" max="50" step="0.5" value="5">
+          <span class="unit">kg</span>
+        </div>
+        <div class="field-inline">
+          <label for="goalStart">開始日</label>
+          <input id="goalStart" type="date">
+        </div>
+      </div>
+    </div>
+    <div class="goal-remain"><span class="num" id="gRemain">36,000</span><small>kcal</small></div>
+    <div class="goal-bar" role="progressbar" aria-label="減量目標の達成率" aria-valuemin="0" aria-valuemax="100" id="gBar"><div class="goal-fill" id="gFill"></div></div>
+    <div class="goal-meta" id="gMeta"></div>
+    <div class="goal-pace" id="gPace"></div>
+    <p class="goal-note">体脂肪1kgを約7,200kcalとして計算した目安です。開始日からの運動の記録だけを引いています（食事は含みません）。</p>
   </section>
 
   <div class="main">
@@ -117,6 +141,7 @@
 </div>
 
 <script src="data.js"></script>
+<script src="goal.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

@@ -152,6 +152,8 @@ function render(){
   renderChart(byDate, today);
   renderBreakdown(logs, today);
   renderHistory(logs);
+  // 減量目標（goal.js）に、サンプルではない本当の記録を渡す
+  if(window.renderGoal) window.renderGoal(state.logs);
 }
 
 function niceMax(v){
