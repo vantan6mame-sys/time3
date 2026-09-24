@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>うごいた帳</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>うごいた<span>帳</span></h1>
+      <p>運動を選んで時間を入れるだけ。消費カロリーと運動習慣を記録します。</p>
+    </div>
+    <div class="profile">
+      <div class="field-inline">
+        <label for="weight">体重</label>
+        <input id="weight" type="number" inputmode="decimal" min="20" max="200" step="0.1" value="60">
+        <span class="unit">kg</span>
+      </div>
+      <div class="field-inline">
+        <label for="goal">週の目標</label>
+        <select id="goal">
+          <option value="1">1日</option><option value="2">2日</option><option value="3">3日</option>
+          <option value="4" selected>4日</option><option value="5">5日</option><option value="6">6日</option><option value="7">7日</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <div class="sample-note" id="sampleNote" hidden>
+    <b>表示中の記録はサンプルです。</b>
+    <span>最初の運動を記録すると、サンプルは消えてあなたの記録だけになります。</span>
+  </div>
+
+  <section class="score" aria-label="サマリー">
+    <div class="burn">
+      <span class="lab">今日の消費</span>
+      <span class="val" id="sToday">0<small>kcal</small></span>
+      <span class="sub" id="sTodayMin">0分</span>
+    </div>
+    <div class="burn">
+      <span class="lab">今週の消費</span>
+      <span class="val" id="sWeek">0<small>kcal</small></span>
+      <span class="sub" id="sWeekMin">0分</span>
+    </div>
+    <div class="streak">
+      <span class="lab">連続運動日数</span>
+      <span class="val" id="sStreak">0<small>日</small></span>
+      <span class="sub" id="sBest">最長 0日</span>
+    </div>
+    <div class="streak">
+      <span class="lab">今週の運動日</span>
+      <span class="val" id="sDays">0<small>/ 4日</small></span>
+      <div class="dots" id="sDots" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <div class="main">
+    <form class="card form" id="form" autocomplete="off">
+      <h2>運動を記録する</h2>
+      <div>
+        <span class="lbl" id="exLbl">運動の種類</span>
+        <div class="ex-grid" id="exGrid" role="group" aria-labelledby="exLbl"></div>
+      </div>
+      <div class="row">
+        <div>
+          <label class="lbl" for="minutes">運動時間</label>
+          <div class="dur">
+            <input class="inp" id="minutes" type="number" inputmode="numeric" min="1" max="600" step="1" value="30">
+            <span>分</span>
+          </div>
+        </div>
+        <div>
+          <label class="lbl" for="date">日付</label>
+          <input class="inp" id="date" type="date">
+        </div>
+      </div>
+      <div class="chips" id="chips" aria-label="時間のプリセット"></div>
+      <div class="preview">
+        <div>
+          <div class="lbl" style="margin:0">消費カロリー（目安）</div>
+          <div class="big" id="pvKcal">0<small>kcal</small></div>
+        </div>
+        <div class="formula" id="pvFormula"></div>
+      </div>
+      <button class="btn" id="save" type="submit">記録する</button>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </form>
+
+    <div class="stack">
+      <section class="card">
+        <h2>直近14日の消費カロリー <span class="aside" id="chartAside"></span></h2>
+        <div class="chart-wrap"><svg class="chart" id="chart" viewBox="0 0 640 220" role="img" aria-label="直近14日の消費カロリー棒グラフ"></svg></div>
+      </section>
+
+      <section class="card">
+        <h2>今月の内訳 <span class="aside" id="bdAside"></span></h2>
+        <div class="bd" id="bd"></div>
+      </section>
+
+      <section class="card">
+        <h2>記録 <span class="aside" id="histAside"></span></h2>
+        <div id="hist"></div>
+      </section>
+
+      <p class="foot">
+        消費カロリー ＝ メッツ × 体重(kg) × 時間(h) × 1.05 で計算した目安です。メッツは国立健康・栄養研究所「改訂版 身体活動のメッツ(METs)表」を参考にしています。記録時の体重で計算した値を保存するので、体重を変えても過去の記録は変わりません。
+        <br><span class="status" id="status"></span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
