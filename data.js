@@ -10,5 +10,7 @@ window.EXERCISES = [
   {id:"walk",   name:"ウォーキング", note:"普通〜やや速歩",         mets:3.5, min:30},
   {id:"cycle",  name:"サイクリング", note:"時速16〜19km",          mets:6.8, min:30},
   {id:"swim",   name:"水泳",         note:"クロール・ゆっくり",    mets:5.8, min:30},
+  {id:"kintore",name:"筋トレ",      note:"ダンベル10kg",          mets:6.0, min30},
+  {id:"dansu",name:"ダンス",        note:"kpop",                mets:6.5, min45},
   // ↓ Aさん担当：ここに運動を2つ追加する
 ];
