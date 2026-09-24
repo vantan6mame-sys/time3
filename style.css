@@ -37,7 +37,7 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.6}
 .wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:20px 48px;display:grid;gap:20px}
-button,input,select{font:inherit;color:inherit}
+button,input,select{font:inherit;color:inherit;border-radius: 10px;}
 :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .num{font-family:var(--f-num);font-variant-numeric:tabular-nums;letter-spacing:.01em}
 
